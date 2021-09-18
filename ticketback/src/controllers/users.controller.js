@@ -13,6 +13,7 @@ export const signUp = async (req, res) => {
         password: await User.encryptPassword(password),
         admin
     })
+    console.log(newUser)
     const savedUser = await newUser.save();
     const token = jwt.sign({ id: savedUser['id'] }, jwtAccess, {
         expiresIn: (24 * 60 * 60)
